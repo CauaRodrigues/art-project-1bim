@@ -1,7 +1,6 @@
 import "./style.css";
 import * as THREE from "three";
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
-import * as dat from "dat.gui";
 
 // Debug
 // const gui = new dat.GUI();
@@ -19,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.z = 25;
 
 // Renderer
-const canvas = document.querySelector("canvas.webgl");
+const canvas = document.querySelector("canvas.default");
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setClearColor("#181818");
 renderer.setSize(window.innerWidth, window.innerHeight);

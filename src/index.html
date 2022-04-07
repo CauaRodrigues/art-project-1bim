@@ -7,10 +7,49 @@
 	</head>
 	<body>
 		<main class="container-message">
-			<button type="button" class="message">
+			<button type="button" onclick="actionHandleGeometry()" class="message">
 				Press key space or click here
 			</button>
 		</main>
-		<canvas class="webgl"></canvas>
+
+		<canvas class="default"></canvas>
+		<canvas class="sphere"></canvas>
+		<canvas class="box"></canvas>
+		<canvas class="torus"></canvas>
+		<canvas class="torusknot"></canvas>
+		<canvas class="cone"></canvas>
+
+		<script type="text/javascript">
+			window.addEventListener("keyup", (e) => {
+				const keyCode = e.which || e.keyCode || 0;
+				keyCode === 32 && handleGeometry();
+			});
+
+			const actionHandleGeometry = () => handleGeometry();
+
+			const getGeometries = () => {
+				let defaultGeometry, sphere, box, torus, torusknot, cone;
+				defaultGeometry = document.querySelector(".default").style.display;
+				sphere = document.querySelector(".sphere").style.display;
+				box = document.querySelector(".box").style;
+				torus = document.querySelector(".torus").style;
+				torusknot = document.querySelector(".torusknot").style;
+				cone = document.querySelector(".cone").style;
+				return {
+					defaultGeometry,
+					sphere,
+					box,
+					torus,
+					torusknot,
+					cone,
+				};
+			};
+
+			function handleGeometry() {
+				const geometries = getGeometries();
+				console.log(geometries);
+				geometries.defaultGeometry = "none";
+			}
+		</script>
 	</body>
 </html>

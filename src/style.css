@@ -16,14 +16,6 @@ body {
 	overflow-y: hidden;
 }
 
-.webgl {
-	position: absolute;
-	top: 0;
-	left: 0;
-	outline: none;
-	mix-blend-mode: exclusion;
-}
-
 .container-message {
 	display: flex;
 	align-items: flex-end;
@@ -34,7 +26,59 @@ body {
 .container-message button {
 	border: none;
 	background-color: transparent;
+	cursor: pointer;
+	z-index: 10;
 	font-size: large;
 	font-weight: 600;
 	color: #fff;
+}
+
+.default {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: none;
+	mix-blend-mode: exclusion;
+	display: block;
+}
+
+.sphere {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: none;
+	mix-blend-mode: exclusion;
+	display: none;
+}
+.box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: none;
+	mix-blend-mode: exclusion;
+	display: none;
+}
+.torus {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: none;
+	mix-blend-mode: exclusion;
+	display: none;
+}
+.torusknot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: none;
+	mix-blend-mode: exclusion;
+	display: none;
+}
+.cone {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: none;
+	mix-blend-mode: exclusion;
+	display: none;
 }
