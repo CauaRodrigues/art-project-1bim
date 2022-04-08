@@ -2,6 +2,11 @@ import "./style.css";
 import * as THREE from "three";
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
 
+window.addEventListener("keyup", (e) => {
+	const keyCode = e.which || e.keyCode || 0;
+	keyCode === 32 && handleGeometry();
+});
+
 // Debug
 // const gui = new dat.GUI();
 
@@ -37,12 +42,12 @@ const lights = [];
 const lightHelpers = [];
 
 const lightValues = [
-	{ colour: 0x0c0810, intensity: 8, dist: 12, x: 1, y: 0, z: 8 },
+	{ colour: 0x2d33d3, intensity: 4, dist: 12, x: 1, y: 0, z: 8 },
 	{ colour: 0x8142f5, intensity: 6, dist: 12, x: -2, y: 1, z: -10 },
 	{ colour: 0x6d22b3, intensity: 3, dist: 10, x: 0, y: 10, z: 1 },
 	{ colour: 0x251c8a, intensity: 6, dist: 12, x: 0, y: -10, z: -1 },
-	{ colour: 0x9e42f5, intensity: 6, dist: 12, x: 10, y: 3, z: 0 },
-	{ colour: 0x280350, intensity: 6, dist: 12, x: -10, y: -1, z: 0 },
+	{ colour: 0x9e42f5, intensity: 5, dist: 12, x: 10, y: 3, z: 0 },
+	{ colour: 0x2d33d3, intensity: 6, dist: 12, x: -10, y: -1, z: 0 },
 ];
 
 for (let i = 0; i < lightValues.length; i++) {
@@ -63,14 +68,13 @@ for (let i = 0; i < lightValues.length; i++) {
 }
 
 // Create Box
-// const boxGeometry = new THREE.BoxGeometry(2, 2, 2);
-// const boxMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
-// const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-// boxMesh.rotation.set(40, 0, 40);
-// scene.add(boxMesh);
+const boxGeometry = new THREE.BoxGeometry(4, 4, 4);
+const boxMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
+boxMesh.rotation.set(40, 0, 40);
 
 // Create Sphere
-const sphereLargeGeometry = new THREE.SphereGeometry(1, 12, 12);
+const sphereLargeGeometry = new THREE.SphereGeometry(4, 12, 12);
 const sphereLargeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
 const sphereLarge = new THREE.Mesh(sphereLargeGeometry, sphereLargeMaterial);
 sphereLarge.rotation.set(40, 0, 40);
@@ -82,6 +86,60 @@ const torusMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
 const torus = new THREE.Mesh(torusGeometry, torusMaterial);
 torus.rotation.set(40, 0, 40);
 scene.add(torus);
+
+// Create Cone
+const coneGeometry = new THREE.ConeGeometry(2, 10, 16);
+const coneMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+const cone = new THREE.Mesh(coneGeometry, coneMaterial);
+
+// Create torusknot
+const torusKnotGeometry = new THREE.TorusKnotGeometry(
+	12.293,
+	2.3364,
+	190,
+	20,
+	6,
+	14
+);
+const torusKnotMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+const torusKnot = new THREE.Mesh(torusKnotGeometry, torusKnotMaterial);
+
+// Create Cylinder
+const cylinderGeometry = new THREE.CylinderGeometry(5, 5, 20, 32);
+const cylinderMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
+const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+
+// Trocar formas
+let counter = 0;
+
+const handleGeometry = () => {
+	counter += 1;
+	console.log(counter);
+
+	if (counter == 1) {
+		scene.remove(torus);
+		scene.add(sphereLarge);
+		camera.position.z = 10;
+	} else if (counter == 2) {
+		scene.remove(sphereLarge);
+		scene.add(boxMesh);
+	} else if (counter == 3) {
+		scene.remove(boxMesh);
+		scene.add(cone);
+	} else if (counter == 4) {
+		scene.remove(cone);
+		scene.add(torusKnot);
+		camera.position.z = 35;
+	} else if (counter == 5) {
+		scene.remove(torusKnot);
+		camera.position.z = 25;
+		scene.add(cylinder);
+	} else if (counter > 5) {
+		scene.remove(cylinder);
+		scene.add(torus, sphereLarge);
+		counter = 0;
+	}
+};
 
 // Create spheres
 const sphereMeshes = [];
