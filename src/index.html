@@ -7,7 +7,12 @@
 	</head>
 	<body>
 		<main class="container-message">
-			<button type="button" onclick="actionHandleGeometry()" class="message">
+			<button
+				type="button"
+				onclick="actionHandleGeometry()"
+				class="message"
+				id="press"
+			>
 				Press key space
 			</button>
 		</main>
@@ -17,106 +22,5 @@
 		<canvas class="box"></canvas>
 		<canvas class="torusknot"></canvas>
 		<canvas class="cone"></canvas>
-
-		<!-- <script type="text/javascript">
-			window.addEventListener("keyup", (e) => {
-				const keyCode = e.which || e.keyCode || 0;
-				keyCode === 32 && handleGeometry();
-			});
-			const actionHandleGeometry = () => handleGeometry();
-
-			const getGeometries = () => {
-				let defaultGeometry, sphere, box, torusknot, cone;
-				let defaultId, sphereId, boxId, torusknotId, coneId;
-
-				defaultId = document.querySelector("canvas.default").id;
-				defaultGeometry = document.querySelector("canvas.default").style;
-
-				sphere = document.querySelector("canvas.sphere").style;
-				sphereId = document.querySelector("canvas.sphere").id;
-
-				box = document.querySelector("canvas.box").style;
-				boxId = document.querySelector("canvas.box").id;
-
-				torusknot = document.querySelector("canvas.torusknot").style;
-				torusknotId = document.querySelector("canvas.torusknot").id;
-
-				cone = document.querySelector("canvas.cone").style;
-				coneId = document.querySelector("canvas.cone").id;
-				return {
-					first: {
-						defaultId,
-						defaultGeometry,
-						visible: true,
-					},
-					second: {
-						sphere,
-						visible: false,
-						sphereId,
-					},
-					third: {
-						box,
-						visible: false,
-						boxId,
-					},
-					fourth: {
-						cone,
-						visible: false,
-						coneId,
-					},
-					fifth: {
-						torusknot,
-						visible: false,
-						torusknotId,
-					},
-				};
-			};
-
-			function handleGeometry() {
-				const { first, second, third, fourth, fifth } = getGeometries();
-				if (first.visible) {
-					first.defaultGeometry.display = "none";
-					first.visible = false;
-					document.querySelector("canvas.default").id = "";
-
-					second.sphere.display = "block";
-					second.visible = true;
-					document.querySelector("canvas.sphere").id = "true";
-				} else if (second.visible) {
-					second.defaultGeometry.display = "none";
-					second.visible = false;
-					document.querySelector("canvas.sphere").id = "";
-
-					third.sphere.display = "block";
-					third.visible = true;
-					document.querySelector("canvas.box").id = "true";
-				} else if (third.visible) {
-					third.defaultGeometry.display = "none";
-					third.visible = false;
-					document.querySelector("canvas.box").id = "";
-
-					fourth.sphere.display = "block";
-					fourth.visible = true;
-					document.querySelector("canvas.torusknot").id = "true";
-				} else if (fourth.visible) {
-					fourth.defaultGeometry.display = "none";
-					fourth.visible = false;
-					document.querySelector("canvas.torusknot").id = "";
-
-					fifth.sphere.display = "block";
-					fifth.visible = true;
-					document.querySelector("canvas.cone").id = "true";
-				} else if (fifth.visible) {
-					fifth.defaultGeometry.display = "none";
-					fifth.visible = false;
-					document.querySelector("canvas.cone").id = "";
-
-					first.sphere.display = "block";
-					first.visible = true;
-					document.querySelector("canvas.default").id = "true";
-				}
-				document.body.style.backgroundColor = "#181818";
-			}
-		</script> -->
 	</body>
 </html>

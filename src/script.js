@@ -7,6 +7,9 @@ window.addEventListener("keyup", (e) => {
 	keyCode === 32 && handleGeometry();
 });
 
+let changeGeometry = document.querySelector("#press");
+changeGeometry.onclick = () => handleGeometry();
+
 // Debug
 // const gui = new dat.GUI();
 
@@ -114,7 +117,6 @@ let counter = 0;
 
 const handleGeometry = () => {
 	counter += 1;
-	console.log(counter);
 
 	if (counter == 1) {
 		scene.remove(torus);
